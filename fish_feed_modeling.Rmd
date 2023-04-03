@@ -36,7 +36,7 @@ subset_feeds$protein_source <- factor(subset_feeds$protein_source)
 
 
 ```{r}
-#### PFOS ####
+### PFOS Model
 
 # Run the multiple linear regression
 PFOSmodel <- lm(PFOS ~ protein_per + protein_source + mfr, data = subset_feeds)
@@ -63,7 +63,7 @@ ggplot(subset_feeds, aes(x = mfr, y = PFOS)) +
 
 
 ```{r}
-# PFNA Model
+### PFNA Model
 
 # Run the multiple linear regression
 PFNAmodel <- lm(PFNA ~ protein_per + protein_source + mfr, data = subset_feeds)
@@ -88,7 +88,7 @@ summary(PFDAmodel)
 
 
 ```{r}
-# PFUnA Model
+### PFUnA Model
 
 # Run the multiple linear regression
 PFUnAmodel <- lm(PFUnA ~ protein_per + protein_source + mfr, data = subset_feeds)
@@ -97,9 +97,16 @@ PFUnAmodel <- lm(PFUnA ~ protein_per + protein_source + mfr, data = subset_feeds
 summary(PFUnAmodel)
 ```
 ```{r}
-# Overall, it appears that PFOS is the only compound that appears to differ significantly between manufacturers and protein percentage. The other three compounds found no significant differences. There are several explanations and conclusions that can be drawn from this. Firstly, as mentioned above, the limit of detection (LOD) was used as the concentration of PFNA, PFDA, and PFUnA in some of the feeds. The LOD is the lowest concentration that can be reliably detected and distinguished from background noise. Therefore, it is likely that for the feeds in which the LOD was used, then that compound was not actually present. Because the LOD was used in about half of the feeds for each of the three compounds, there is likely to be no significant differences. 
+# Overall, it appears that PFOS is the only compound that appears to differ significantly between manufacturers and protein percentage. 
+# The other three compounds found no significant differences. There are several explanations and conclusions that can be drawn from this. 
+# Firstly, as mentioned above, the limit of detection (LOD) was used as the concentration of PFNA, PFDA, and PFUnA in some of the feeds. 
+# The LOD is the lowest concentration that can be reliably detected and distinguished from background noise. 
+#Therefore, it is likely that for the feeds in which the LOD was used, then that compound was not actually present. 
+# Because the LOD was used in about half of the feeds for each of the three compounds, there is likely to be no significant differences. 
 
-# Next, we can conclude that there are little amounts of PFAS compounds present in commercial fish feeds. PFOS was the only compound that was present in all of the feeds tested, and there were some significant differences in PFOS between manufacturers and protein percentages. PFOS is the most widespread PFAS compound currently known, so it is not surprising to see it in every feed. 
+# Next, we can conclude that there are little amounts of PFAS compounds present in commercial fish feeds. 
+# PFOS was the only compound that was present in all of the feeds tested, and there were some significant differences in PFOS between manufacturers and protein percentages. 
+# PFOS is the most widespread PFAS compound currently known, so it is not surprising to see it in every feed. 
 ```
 
 
