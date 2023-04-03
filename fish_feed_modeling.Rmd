@@ -1,6 +1,8 @@
 ---
 title: "fish_feed_PFAS_analysis"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 date: "2023-03-02"
 ---
 
@@ -17,12 +19,14 @@ feeds <- read.csv('feed_pfas.csv')
 # Count occurrences of each unique value in the mfr (manufacturer) column
 mfr_counts <- table(feeds$mfr)
 print(mfr_counts)
-# Because manufacturers B and E have occurrences of less than 3, I will omit them from my analyses
+# Because manufacturers B and E have occurrences of less than 3, I will omit them from my
+# analyses
 
 # Count occurrences of each unique value in the protein_source column
 protein_source_counts <- table(feeds$protein_source)
 print(protein_source_counts)
-# Likewise, because protein sources 'ap' and 'pp' each only occur once, I will omit them from my analyses.
+# Likewise, because protein sources 'ap' and 'pp' each only occur once, I will omit them
+# from my analyses.
 
 # Subset the data to exclude certain protein_source and mfr values
 excluded_ps <- c('ap', 'pp')
@@ -71,7 +75,10 @@ PFNAmodel <- lm(PFNA ~ protein_per + protein_source + mfr, data = subset_feeds)
 # View the summary of the model
 summary(PFNAmodel)
 
-# Nothing significant. This is likely due to low power and low variability. The LOD (limit of detection) was used for about half of the feeds, and the LOD varies little between each feed (~0.101 - 0.103 ng/g), so there is low likelihood of significant differences. 
+# Nothing significant. This is likely due to low power and low variability.
+# The LOD (limit of detection) was used for about half of the feeds, 
+# and the LOD varies little between each feed (~0.101 - 0.103 ng/g), 
+# so there is low likelihood of significant differences. 
 
 ```
 
@@ -97,16 +104,26 @@ PFUnAmodel <- lm(PFUnA ~ protein_per + protein_source + mfr, data = subset_feeds
 summary(PFUnAmodel)
 ```
 ```{r}
-# Overall, it appears that PFOS is the only compound that appears to differ significantly between manufacturers and protein percentage. 
-# The other three compounds found no significant differences. There are several explanations and conclusions that can be drawn from this. 
-# Firstly, as mentioned above, the limit of detection (LOD) was used as the concentration of PFNA, PFDA, and PFUnA in some of the feeds. 
-# The LOD is the lowest concentration that can be reliably detected and distinguished from background noise. 
-# Therefore, it is likely that for the feeds in which the LOD was used, then that compound was either very low or not present. 
-# Because the LOD was used in about half of the feeds for each of the three compounds, there is likely to be no significant differences. 
+# Overall, it appears that PFOS is the only compound that appears to differ
+# significantly between manufacturers and protein percentage. 
+# The other three compounds found no significant differences. There are
+# several explanations and conclusions that can be drawn from this. 
+# Firstly, as mentioned above, the limit of detection (LOD) was used as the
+# concentration of PFNA, PFDA, and PFUnA in some of the feeds. 
+# The LOD is the lowest concentration that can be reliably detected and
+# distinguished from background noise. 
+# Therefore, it is likely that for the feeds in which the LOD was used,
+# then that compound was either very low or not present. 
+# Because the LOD was used in about half of the feeds for each of the three
+# compounds, there is likely to be no significant differences. 
 
-# Next, we can conclude that there are little amounts of PFAS compounds present in commercial fish feeds. 
-# PFOS was the only compound that was present in all of the feeds tested, and there were some significant differences in PFOS between manufacturers and protein percentages. 
-# PFOS is the most widespread PFAS compound currently known, so it is not surprising to see it in every feed. 
+# Next, we can conclude that there are little amounts of PFAS compounds
+# present in commercial fish feeds. 
+# PFOS was the only compound that was present in all of the feeds tested,
+# and there were some significant differences in PFOS between manufacturers
+# and protein percentages. 
+# PFOS is the most widespread PFAS compound currently known, so it is not
+# surprising to see it in every feed. 
 ```
 
 
