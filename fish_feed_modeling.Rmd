@@ -101,7 +101,7 @@ summary(PFUnAmodel)
 # The other three compounds found no significant differences. There are several explanations and conclusions that can be drawn from this. 
 # Firstly, as mentioned above, the limit of detection (LOD) was used as the concentration of PFNA, PFDA, and PFUnA in some of the feeds. 
 # The LOD is the lowest concentration that can be reliably detected and distinguished from background noise. 
-#Therefore, it is likely that for the feeds in which the LOD was used, then that compound was not actually present. 
+# Therefore, it is likely that for the feeds in which the LOD was used, then that compound was either very low or not present. 
 # Because the LOD was used in about half of the feeds for each of the three compounds, there is likely to be no significant differences. 
 
 # Next, we can conclude that there are little amounts of PFAS compounds present in commercial fish feeds. 
