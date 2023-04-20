@@ -1,0 +1,6 @@
+comp,PFAS compound
+conc ,concentration of PFAS compound in feed
+feed_num ,unique identifier for each feed
+protein_per,percentage of protein in the feed
+protein_source,primary source of the protein in the feed
+mfr,manufacturer of the feed
