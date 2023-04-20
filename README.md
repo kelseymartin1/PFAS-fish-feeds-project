@@ -12,7 +12,7 @@ Data were collected by analyzing each feed using liquid chromatography tandem ma
 
 I will be looking at 4 compounds. These compounds are PFOS, PFNA, PFDA, and PFUnA. 
 
-The .csv file is titled 'feed_pfas.csv'. It is structured into separate columns for each variable (protein_per, protein_source, mfr) and each compounds (PFOS, PFNA, PFDA, PFUnA).
+The .csv file is titled 'feeds_restructured.csv'.
 
 The data was read into R.
 
