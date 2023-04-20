@@ -22,4 +22,4 @@ Animal protein (ap) and plant protein (pp), as well as manufacturers B and E wer
 
 Categorical variables were then factored so as to carry out multiple linear regression analyses.
 
-A multiple linear regression was carried out for each of the four compounds.
+Mixed effects models were conducted to investigate the significance between PFAS concentrations and protein content, protein source, and manufacturer.
