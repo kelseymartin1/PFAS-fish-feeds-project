@@ -1,0 +1,144 @@
+---
+title: "fish_feed_PFAS_analysis"
+output:
+  pdf_document: default
+  html_document: default
+date: "2023-03-02"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(lme4)
+library(ggplot2)
+```
+
+```{r}
+# Read in raw data
+feeds_disagg <- read.csv('feeds_restructured.csv')
+
+### # Because manufacturers B and E only occur in one or 2 feeds, I will omit them from my
+# analyses
+# Likewise, because protein sources 'ap' and 'pp' each only occur in one feed, I will omit them
+# from my analyses.
+excluded_ps <- c('ap', 'pp')
+excluded_mfr <- c('B', 'E')
+subset_feeds <- subset(feeds_disagg, !(protein_source %in% excluded_ps) & !(mfr %in% excluded_mfr))
+
+# Factor mfr and protein source
+subset_feeds$mfr <- factor(subset_feeds$mfr)
+subset_feeds$protein_source <- factor(subset_feeds$protein_source)
+```
+
+```{r}
+# PFOS Mixed Effects Model
+pfos_mmod <- lmer(conc ~ protein_per + mfr + protein_source + (1 | feed_num), 
+            subset = comp == 'PFOS', data = subset_feeds)
+
+summary(pfos_mmod)
+anova(pfos_mmod)
+
+
+# Figures
+ggplot(subset(subset_feeds, comp == "PFOS"), aes(x = protein_per, y = conc)) +
+  geom_point() +
+  xlab("Protein percent") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  ylab("PFOS Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFOS"), aes(x = protein_source, y = conc)) +
+  geom_boxplot() +
+  xlab("Protein source") +
+  ylab("PFOS Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFOS"), aes(x = mfr, y = conc)) +
+  geom_boxplot() +
+  xlab("Manufacturer") +
+  ylab("PFOS Concentration")
+```
+
+
+```{r}
+# PFNA Mixed Effects Model
+pfna_mmod <- lmer(conc ~ protein_per + mfr + protein_source + (1 | feed_num), 
+            subset = comp == 'PFNA', data = subset_feeds)
+
+summary(pfna_mmod)
+anova(pfna_mmod)
+
+# Figures
+ggplot(subset(subset_feeds, comp == "PFNA"), aes(x = protein_per, y = conc)) +
+  geom_point() +
+  xlab("Protein percent") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  ylab("PFNA Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFNA"), aes(x = protein_source, y = conc)) +
+  geom_boxplot() +
+  xlab("Protein source") +
+  ylab("PFNA Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFNA"), aes(x = mfr, y = conc)) +
+  geom_boxplot() +
+  xlab("Manufacturer") +
+  ylab("PFNA Concentration")
+```
+
+```{r}
+# PFDA Mixed Effects Model
+
+pfda_mmod <- lmer(conc ~ protein_per + mfr + protein_source + (1 | feed_num), 
+            subset = comp == 'PFDA', data = subset_feeds)
+
+summary(pfda_mmod, correlation = FALSE)
+anova(pfda_mmod)
+
+
+#Figures
+ggplot(subset(subset_feeds, comp == "PFDA"), aes(x = protein_per, y = conc)) +
+  geom_point() +
+  xlab("Protein percent") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  ylab("PFDA Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFDA"), aes(x = protein_source, y = conc)) +
+  geom_boxplot() +
+  xlab("Protein source") +
+  ylab("PFDA Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFDA"), aes(x = mfr, y = conc)) +
+  geom_boxplot() +
+  xlab("Manufacturer") +
+  ylab("PFDA Concentration")
+
+```
+
+```{r}
+# PFUnA Mixed Effects Model
+pfuna_mmod <- lmer(conc ~ protein_per + mfr + protein_source + (1 | feed_num), 
+            subset = comp == 'PFUnA', data = subset_feeds)
+
+summary(pfuna_mmod, correlation = FALSE)
+anova(pfuna_mmod)
+
+#Figures
+ggplot(subset(subset_feeds, comp == "PFUnA"), aes(x = protein_per, y = conc)) +
+  geom_point() +
+  xlab("Protein percent") +
+  geom_smooth(method = "lm", se = FALSE, color = "red") +
+  ylab("PFUnA Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFUnA"), aes(x = protein_source, y = conc)) +
+  geom_boxplot() +
+  xlab("Protein source") +
+  ylab("PFUnA Concentration")
+
+ggplot(subset(subset_feeds, comp == "PFUnA"), aes(x = mfr, y = conc)) +
+  geom_boxplot() +
+  xlab("Manufacturer") +
+  ylab("PFUnA Concentration")
+```
+
+
