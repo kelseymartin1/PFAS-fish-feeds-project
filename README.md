@@ -10,6 +10,8 @@ The questions we seek to answer are:
 
 Data were collected by analyzing each feed using liquid chromatography tandem mass spectrometry in the Fall of 2022. 
 
+The final .Rmd file is titled "mixed_effects_models.Rmd"
+
 I will be looking at 4 compounds. These compounds are PFOS, PFNA, PFDA, and PFUnA. 
 
 The .csv file is titled 'feeds_restructured.csv'.
