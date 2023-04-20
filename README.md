@@ -12,6 +12,12 @@ Data were collected by analyzing each feed using liquid chromatography tandem ma
 
 The final .Rmd file is titled "mixed_effects_models.Rmd"
 
+A pdf of the analysis is included.
+
+The data folder include the .csv file used for the analysis, as well as the metadata.
+
+The Figures folder includes all figures created in the analysis.
+
 I will be looking at 4 compounds. These compounds are PFOS, PFNA, PFDA, and PFUnA. 
 
 The .csv file is titled 'feeds_restructured.csv'.
@@ -22,6 +28,6 @@ Counts for both categorical variables (protein_source and mfr) were calculated t
 
 Animal protein (ap) and plant protein (pp), as well as manufacturers B and E were subsetted out of the data. The new dataset is now called subset_feeds.
 
-Categorical variables were then factored so as to carry out multiple linear regression analyses.
+Categorical variables were then factored.
 
 Mixed effects models were conducted to investigate the significance between PFAS concentrations and protein content, protein source, and manufacturer.
